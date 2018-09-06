@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       greeting: 'Not Receive',
-      datas: []
+      datas: [],
     };
   },
   watch: {
@@ -78,8 +78,8 @@ export default {
       } else {
         this.greeting = 'Damn';
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
