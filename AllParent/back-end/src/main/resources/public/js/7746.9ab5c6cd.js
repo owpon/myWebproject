@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["7746"],{7746:function(t,e,n){"use strict";n.r(e);var s=function(){var t=this,e=t.$createElement,s=t._self._c||e;return s("v-layout",{attrs:{column:"","align-center":""}},[s("h2",[t._v("oops,這個尼哥似乎沒有找到你的頁面")]),s("img",{staticClass:"mb-5",attrs:{src:n("463f"),alt:"Vuetify.js"}})])},l=[],a=n("2877"),o={},u=Object(a["a"])(o,s,l,!1,null,null,null);u.options.__file="404.vue";e["default"]=u.exports}}]);
+//# sourceMappingURL=7746.9ab5c6cd.js.map

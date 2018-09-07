@@ -35,8 +35,8 @@ public class ContextEntity implements Serializable {
 	private String context;
 	@Column(name = "create_time", updatable = false)
 	@CreatedDate
-	private Date create_time;
+	private Date createTime;
 	@Column(name = "update_time")
 	@LastModifiedDate
-	private Date update_time;
+	private Date updateTime;
 }

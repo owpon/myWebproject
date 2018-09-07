@@ -2,27 +2,29 @@
   <v-layout column align-center>
     <h1 v-text="greeting"></h1>
     <img src="@/assets/0.gif" alt="Vuetify.js" class="mb-5">
-    <v-card>
-      <v-container fluid grid-list-lg>
+    <v-flex xs12>
+      <v-container grid-list-lg>
         <v-layout row wrap align-center>
-          <v-flex xs12 sm6 v-for="({auther,context,create_time,update_time,index}) in datas" :key="index">
-            <v-card hover>
-              <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="2.75"></v-img>
-              <v-card-title primary-title>
+          <v-flex xs12 md4 v-for="({auther,context,createTime,updateTime,id}) in datas" :key="id">
+            <v-card @click.native="clickHandler(id)" hover>
+              <img src="@/assets/404.gif" alt="Vuetify.js" class="mb-4">
+              <v-card-title primary-title class="layout justify-center">
                 <div>
-                  <h3 class="headline mb-0">{{auther}}</h3>
-                  <div>{{context}}<br>Southern Highlands of New South Wales, ...</div>
+                  <div class="headline text-xs-center">{{auther}}</div>
                 </div>
               </v-card-title>
+              <v-card-text>
+                <div>{{context}}</div>
+              </v-card-text>
               <v-card-actions>
-                <v-btn flat color="orange">{{create_time}}</v-btn>
-                <v-btn flat color="orange" v-text="update_time"></v-btn>
+                <v-btn flat color="orange">{{dateformat(createTime)}}</v-btn>
+                <v-btn flat color="orange" v-text="dateformat(updateTime)"></v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
         </v-layout>
       </v-container>
-    </v-card>
+    </v-flex>
     <blockquote>
       &#8220;First, solve the problem. Then, write the code.&#8221;
       <footer>
@@ -51,26 +53,32 @@ li {
 a {
   color: #42b983;
 }
+.v-card img {
+  width: 100%;
+}
 </style>
 
 <script>
+import dateformat from '../common/dateformate';
+
 export default {
   mounted() {
-    this.axios
-      .get('http://localhost:8088/getAllContext', {})
-      .then(({ data }) => {
-        this.datas = data;
-        // window.setTimeout(() => {
-        //   this.datas = [];
-        // }, 3000);
-      });
+    this.axios.get('/getAllContext', {}).then(({ data }) => {
+      this.$store.commit('updateDatas');
+      console.log(this.$store.state.datas);
+      // this.datas = data;
+      // window.setTimeout(() => {
+      //   this.datas = [];
+      // }, 3000);
+    });
   },
   data() {
     return {
       greeting: 'Not Receive',
-      datas: []
+      datas: this.$store.state.datas,
     };
   },
+
   watch: {
     datas(val) {
       if (val.length > 0) {
@@ -78,8 +86,16 @@ export default {
       } else {
         this.greeting = 'Damn';
       }
-    }
-  }
+    },
+  },
+  methods: {
+    dateformat(date) {
+      return dateformat(date);
+    },
+    clickHandler(index) {
+      alert(` wooooooooow ${context} `);
+    },
+  },
 };
 </script>
 

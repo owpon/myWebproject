@@ -11,9 +11,9 @@
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
-      <v-container fluid>
-        <router-view/>
-      </v-container>
+      <!-- <v-container fluid grid-list-lg> -->
+      <router-view/>
+      <!-- </v-container> -->
     </v-content>
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
       <v-list>
