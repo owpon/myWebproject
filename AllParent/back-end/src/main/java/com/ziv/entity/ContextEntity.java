@@ -1,29 +1,42 @@
 package com.ziv.entity;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "context")
-public class ContextEntity {
+@EntityListeners(AuditingEntityListener.class)
+public class ContextEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	@Column(name = "auther")
 	private String auther;
 	@Column(name = "context")
 	private String context;
-	@Column(name = "create_time")
+	@Column(name = "create_time", updatable = false)
+	@CreatedDate
 	private Date create_time;
 	@Column(name = "update_time")
+	@LastModifiedDate
 	private Date update_time;
 }

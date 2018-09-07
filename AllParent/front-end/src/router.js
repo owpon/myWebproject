@@ -5,7 +5,6 @@ import Home from './views/Home.vue';
 
 Vue.use(Router);
 
-
 export default new Router({
   mode: 'history',
   routes: [
@@ -40,10 +39,10 @@ export default new Router({
         },
       ],
     },
-    // {
-    //   path: './login/LoginOk',
-    //   name: 'loginok',
-    //   component: () => import('./components/LoginOk.vue'),
-    // },
+    {
+      path: '*',
+      name: 'notFound',
+      component: () => import('./components/404.vue'),
+    },
   ],
 });

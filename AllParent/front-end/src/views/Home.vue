@@ -5,7 +5,7 @@
     <v-card>
       <v-container fluid grid-list-lg>
         <v-layout row wrap align-center>
-          <v-flex xs12 sm6 v-for="({auther,context,create_time,update_time}) in datas" :key="auther">
+          <v-flex xs12 sm6 v-for="({auther,context,create_time,update_time,index}) in datas" :key="index">
             <v-card hover>
               <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="2.75"></v-img>
               <v-card-title primary-title>
@@ -68,18 +68,18 @@ export default {
   data() {
     return {
       greeting: 'Not Receive',
-      datas: [],
+      datas: []
     };
   },
   watch: {
-    datas(val, oldVal) {
+    datas(val) {
       if (val.length > 0) {
         this.greeting = 'Hello';
       } else {
         this.greeting = 'Damn';
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
