@@ -5,20 +5,23 @@
     <v-flex xs12>
       <v-container grid-list-lg>
         <v-layout row wrap align-center>
-          <v-flex xs12 md4 v-for="({auther,context,createTime,updateTime,id}) in datas" :key="id">
-            <v-card @click.native="clickHandler(id)" hover>
-              <img src="@/assets/404.gif" alt="Vuetify.js" class="mb-4">
+          <v-flex xs12 md4 v-for="({title,auther,context,createTime,updateTime,id}) in datas" :key="id">
+            <!-- <v-card @click.native="clickHandler(id)" hover> -->
+            <v-card hover>
+              <!-- <img src="@/assets/404.gif" alt="Vuetify.js" class="mb-4"> -->
               <v-card-title primary-title class="layout justify-center">
                 <div>
-                  <div class="headline text-xs-center">{{auther}}</div>
+                  <div class="headline text-xs-center">{{title}}</div>
                 </div>
               </v-card-title>
               <v-card-text>
                 <div>{{context}}</div>
               </v-card-text>
               <v-card-actions>
-                <v-btn flat color="orange">{{dateformat(createTime)}}</v-btn>
-                <v-btn flat color="orange" v-text="dateformat(updateTime)"></v-btn>
+                <!-- <v-btn flat color="orange">{{dateformat(createTime)}}</v-btn> -->
+                <v-btn flat color="orange" @click="read(id)">read</v-btn>
+                <v-btn flat color="orange">edit</v-btn>
+                <!-- <v-btn flat color="orange" v-text="dateformat(updateTime)"></v-btn> -->
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -59,14 +62,15 @@ a {
 </style>
 
 <script>
+import axios from 'axios';
 import dateformat from '../common/dateformate';
 
 export default {
   mounted() {
-    this.axios.get('/getAllContext', {}).then(({ data }) => {
-      this.$store.commit('updateDatas');
-      console.log(this.$store.state.datas);
-      // this.datas = data;
+    axios.get('/getAllContext', {}).then(({ data }) => {
+      // this.$store.commit('updateDatas');
+      // console.log(this.$store.state.datas);
+      this.datas = data;
       // window.setTimeout(() => {
       //   this.datas = [];
       // }, 3000);
@@ -75,7 +79,7 @@ export default {
   data() {
     return {
       greeting: 'Not Receive',
-      datas: this.$store.state.datas,
+      datas: [],
     };
   },
 
@@ -92,8 +96,8 @@ export default {
     dateformat(date) {
       return dateformat(date);
     },
-    clickHandler(index) {
-      alert(` wooooooooow ${context} `);
+    read(id) {
+      this.$router.push({ name: 'context', params: { id } });
     },
   },
 };

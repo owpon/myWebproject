@@ -31,6 +31,8 @@ public class ContextEntity implements Serializable {
 	private Long id;
 	@Column(name = "auther")
 	private String auther;
+	@Column(name = "title")
+	private String title;
 	@Column(name = "context")
 	private String context;
 	@Column(name = "create_time", updatable = false)
