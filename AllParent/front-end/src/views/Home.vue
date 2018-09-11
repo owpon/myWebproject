@@ -20,7 +20,7 @@
               <v-card-actions>
                 <!-- <v-btn flat color="orange">{{dateformat(createTime)}}</v-btn> -->
                 <v-btn flat color="orange" @click="read(id)">read</v-btn>
-                <v-btn flat color="orange">edit</v-btn>
+                <v-btn flat color="orange" @click="editContext()">edit</v-btn>
                 <!-- <v-btn flat color="orange" v-text="dateformat(updateTime)"></v-btn> -->
               </v-card-actions>
             </v-card>
@@ -98,6 +98,9 @@ export default {
     },
     read(id) {
       this.$router.push({ name: 'context', params: { id } });
+    },
+    editContext() {
+      this.$router.push({ name: 'editContext' });
     },
   },
 };

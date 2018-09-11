@@ -19,6 +19,11 @@ export default new Router({
       component: () => import('./components/context.vue'),
     },
     {
+      path: '/editContext',
+      name: 'editContext',
+      component: () => import('./components/EditContext.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
