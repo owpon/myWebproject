@@ -2,6 +2,7 @@
   <v-layout column align-center>
     <h1 v-text="greeting"></h1>
     <img src="@/assets/0.gif" alt="Vuetify.js" class="mb-5">
+    <v-btn flat color="orange" @click="cleanData(datas)">read</v-btn>
     <v-flex xs12>
       <v-container grid-list-lg>
         <v-layout row wrap align-center>
@@ -101,6 +102,16 @@ export default {
     },
     editContext() {
       this.$router.push({ name: 'editContext' });
+    },
+    getDefaultData() {
+      return {
+        dates: [],
+      };
+    },
+    cleanData(datas) {
+      const def = getSelection();
+      def[datas] = this[datas];
+      Object.assign(this.datas, def);
     },
   },
 };

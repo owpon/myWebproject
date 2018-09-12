@@ -1,0 +1,26 @@
+create database webproject;
+use webproject;
+
+DROP TABLE IF EXISTS `context`;
+CREATE TABLE `context` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200),
+  `auther` varchar(20),
+  `context` nvarchar(10000),
+  `create_time` datetime,
+  `update_time` datetime,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文章'
+
+select * from context;
+
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('我，就是內馬爾!','peer','我是假摔天王',now(),now()+10);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('戰神就是我','henry','我就是戰神，不服來戰阿!',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('這個我不行','hao','三小ㄏㄏ!',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('快救我阿','Alec','我不會vue，快救我阿!',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('這是絕','Davie','我會隱藏我的氣息',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('逼我練好一嘴的幹話','Eka','閉嘴阿!',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('我不能存太多東西ㄏㄏ','mysql','我是一隻快樂的小海豚',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('我不知道我可以幹嘛','Haddop','我是一隻黃色的大象，鼻子超長的啦!',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('我很猛','Linux','企鵝是不能當吉祥物膩!?',now(),now()+100);
+insert into `context` (`title`,`auther`,`context`,`create_time`,`update_time`) values('凜冬將至','Spring','有人在叫我嗎?',now(),now()+100);
