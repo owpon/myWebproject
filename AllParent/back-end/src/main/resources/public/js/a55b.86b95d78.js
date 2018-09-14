@@ -1,2 +1,2 @@
 (window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["a55b"],{a55b:function(n,t,o){"use strict";o.r(t);var e=function(){var n=this,t=n.$createElement,o=n._self._c||t;return o("v-layout",{attrs:{column:"","align-center":""}},[o("router-view"),n.isLogin()?o("router-link",{attrs:{to:"/login"}},[n._v("logon")]):n._e()],1)},i=[],r={methods:{isLogin:function(){return"logon"!==this.$route.name}}},l=r,u=o("2877"),s=Object(u["a"])(l,e,i,!1,null,null,null);s.options.__file="Login.vue";t["default"]=s.exports}}]);
-//# sourceMappingURL=a55b.09663c8a.js.map
+//# sourceMappingURL=a55b.86b95d78.js.map

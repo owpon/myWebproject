@@ -63,57 +63,57 @@ a {
 </style>
 
 <script>
-import axios from 'axios';
-import dateformat from '../common/dateformate';
+  import axios from "axios";
+  import dateformat from "../common/dateformate";
 
-export default {
-  mounted() {
-    axios.get('/getAllContext', {}).then(({ data }) => {
-      // this.$store.commit('updateDatas');
-      // console.log(this.$store.state.datas);
-      this.datas = data;
-      // window.setTimeout(() => {
-      //   this.datas = [];
-      // }, 3000);
-    });
-  },
-  data() {
-    return {
-      greeting: 'Not Receive',
-      datas: [],
-    };
-  },
-
-  watch: {
-    datas(val) {
-      if (val.length > 0) {
-        this.greeting = 'Hello';
-      } else {
-        this.greeting = 'Damn';
-      }
+  export default {
+    mounted() {
+      axios.get("/getAllContext", {}).then(({ data }) => {
+        // this.$store.commit('updateDatas');
+        // console.log(this.$store.state.datas);
+        this.datas = data;
+        // window.setTimeout(() => {
+        //   this.datas = [];
+        // }, 3000);
+      });
     },
-  },
-  methods: {
-    dateformat(date) {
-      return dateformat(date);
-    },
-    read(id) {
-      this.$router.push({ name: 'context', params: { id } });
-    },
-    editContext() {
-      this.$router.push({ name: 'editContext' });
-    },
-    getDefaultData() {
+    data() {
       return {
-        dates: [],
+        greeting: "Not Receive",
+        datas: []
       };
     },
-    cleanData(datas) {
-      const def = getSelection();
-      def[datas] = this[datas];
-      Object.assign(this.datas, def);
+
+    watch: {
+      datas(val) {
+        if (val.length > 0) {
+          this.greeting = "Hello";
+        } else {
+          this.greeting = "Damn";
+        }
+      }
     },
-  },
-};
+    methods: {
+      dateformat(date) {
+        return dateformat(date);
+      },
+      read(id) {
+        this.$router.push({ name: "context", params: { id } });
+      },
+      editContext() {
+        this.$router.push({ name: "editContext" });
+      },
+      getDefaultData() {
+        return {
+          dates: []
+        };
+      },
+      cleanData(datas) {
+        const def = getSelection();
+        def[datas] = this[datas];
+        Object.assign(this.datas, def);
+      }
+    }
+  };
 </script>
 
