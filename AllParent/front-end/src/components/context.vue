@@ -21,17 +21,19 @@ import axios from 'axios';
 import dateformat from '../common/dateformate';
 
 export default {
-  mounted() {
-    axios.get(`/context/${this.$route.params.id}`).then(({ data }) => {
-      this.contextData = data;
-      //   console.log(data);
-    });
+  data(){
+    return{
+      contextData:this.$store.state.cards[this.$route.params.index]
+    }
   },
-  data() {
-    return {
-      contextData: {},
-    };
-  },
+  // computed:{
+  //   contextData(){
+  //     const contextData = this.$store.state.cards.find((ele)=>{
+  //      return ele.id === this.$route.params.id
+  //     });
+  //     return contextData
+  //   },
+  // },
   methods: {
     dateformat(date) {
       return dateformat(date);

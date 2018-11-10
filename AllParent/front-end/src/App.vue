@@ -12,7 +12,7 @@
     </v-toolbar>
     <v-content>
       <!-- <v-container fluid grid-list-lg> -->
-      <router-view/>
+     <router-view/> 
       <!-- </v-container> -->
     </v-content>
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
@@ -32,8 +32,10 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
       clipped: false,
@@ -41,14 +43,19 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-        },
+          icon: "bubble_chart",
+          title: "Inspire"
+        }
       ],
       miniVariant: false,
       right: true,
-      rightDrawer: false,
+      rightDrawer: false
     };
   },
+  mounted() {
+    axios.get("/getAllContext", {}).then(({ data }) => {
+      this.$store.commit("updateDatas", data);
+    });
+  }
 };
 </script>

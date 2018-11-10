@@ -14,12 +14,12 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/context/:id',
+      path: '/context/:index',
       name: 'context',
       component: () => import('./components/context.vue'),
     },
     {
-      path: '/editContext',
+      path: '/editContext/:index',
       name: 'editContext',
       component: () => import('./components/EditContext.vue'),
     },
