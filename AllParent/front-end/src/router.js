@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/context/:index',
       name: 'context',
-      component: () => import('./components/context.vue'),
+      component: () => import(/* webpackChunkName: "damn" */'./components/context.vue'),
     },
     {
       path: '/editContext/:index',
@@ -35,7 +35,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('./views/Login.vue'),
+      component: () => import(/* "login" */ './views/Login.vue'),
       children: [
         {
           path: '/',
