@@ -34,6 +34,7 @@ import axios from "axios";
 export default {
   name: "cards",
   props: ["datas"],
+  computed: {},
   methods: {
     dateformat(date) {
       return dateformat(date);
@@ -51,7 +52,8 @@ export default {
           id: index
         })
         .then(response => {
-          console.log(response)
+          
+          return datas
         })
         .then(error => {
           console.log(error);
