@@ -21,7 +21,7 @@
           <!-- <v-btn flat color="orange">{{dateformat(createTime)}}</v-btn> -->
           <v-btn flat color="orange" @click="read(index)">read</v-btn>
           <v-btn flat color="orange" @click="editContext(index)">edit</v-btn>
-          <v-btn flat color="orange" @click="deleteContext(id,datas)">delete</v-btn>
+          <v-btn flat color="orange" @click="deleteContext(id,datas,index)">delete</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -37,6 +37,7 @@ export default {
   props: ["datas"],
   computed: {},
   methods: {
+    ...mapMutations({ updateDatas: "updateDatas" }),
     dateformat(date) {
       return dateformat(date);
     },
@@ -46,20 +47,21 @@ export default {
     editContext(index) {
       this.$router.push({ name: "editContext", params: { index } });
     },
-    deleteContext(index, datas) {
-      // console.log(datas);
+    deleteContext(index, datas, order) {
       axios
         .delete("http://localhost:8088/delete/" + index, {
           id: index
         })
         .then(response => {
-          // mapMutations({ response: "updateDatas" });
-          console.log(this.$store.data);
+         
+          datas.splice(order, 1);
+           this.updateDatas(datas);
         })
         .then(error => {
           console.log(error);
         });
     },
+
     getDefaultData() {
       return {
         datas: []

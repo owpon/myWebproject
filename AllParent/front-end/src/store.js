@@ -10,6 +10,7 @@ export default new Vuex.Store({
   mutations: {
     updateDatas(state, datas) {
       state.cards = datas
+      console.log("store的：",state.cards)
     },
   },
   actions: {},
