@@ -57,7 +57,7 @@ export default {
           datas.splice(order, 1);
            this.updateDatas(datas);
         })
-        .then(error => {
+        .catch(error => {
           console.log(error);
         });
     },
