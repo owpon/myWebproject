@@ -7,7 +7,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -57,11 +56,17 @@ public class ContextController {
 	}
 
 	// delete context
-	@PostMapping("/delete")
-	public List<ContextEntity> deleteContext(@Valid @RequestBody ContextEntity contextEntity) {
-		iContextRepo.delete(contextEntity);
-		List<ContextEntity> contextData = new ArrayList<ContextEntity>();
-		contextData = iContextRepo.findAll();
-		return contextData;
+//	@PostMapping("/delete")
+//	public List<ContextEntity> deleteContext(@Valid @RequestBody ContextEntity contextEntity) {
+//		iContextRepo.delete(contextEntity);
+//		List<ContextEntity> contextData = new ArrayList<ContextEntity>();
+//		contextData = iContextRepo.findAll();
+//		return contextData;
+//	}
+	@DeleteMapping("/delete/{id}")
+	public String deleteContext(@PathVariable(value = "id") ContextEntity contextEntity) {
+		 iContextRepo.delete(contextEntity);
+		 return "data delete";
 	}
+
 }

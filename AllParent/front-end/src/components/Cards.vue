@@ -21,7 +21,7 @@
           <!-- <v-btn flat color="orange">{{dateformat(createTime)}}</v-btn> -->
           <v-btn flat color="orange" @click="read(index)">read</v-btn>
           <v-btn flat color="orange" @click="editContext(index)">edit</v-btn>
-          <v-btn flat color="orange" @click="deleteContext(id)">delete</v-btn>
+          <v-btn flat color="orange" @click="deleteContext(id,datas)">delete</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -30,6 +30,7 @@
 <script>
 import dateformat from "../common/dateformate";
 import axios from "axios";
+import { mapMutations } from "vuex";
 
 export default {
   name: "cards",
@@ -45,15 +46,15 @@ export default {
     editContext(index) {
       this.$router.push({ name: "editContext", params: { index } });
     },
-    deleteContext(index) {
-      console.log(index);
+    deleteContext(index, datas) {
+      // console.log(datas);
       axios
-        .post("http://localhost:8088/delete", {
+        .delete("http://localhost:8088/delete/" + index, {
           id: index
         })
         .then(response => {
-          
-          return datas
+          // mapMutations({ response: "updateDatas" });
+          console.log(this.$store.data);
         })
         .then(error => {
           console.log(error);
@@ -61,9 +62,10 @@ export default {
     },
     getDefaultData() {
       return {
-        dates: []
+        datas: []
       };
     }
   }
 };
 </script>
+
