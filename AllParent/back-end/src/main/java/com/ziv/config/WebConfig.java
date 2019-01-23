@@ -9,6 +9,6 @@ public class WebConfig implements WebMvcConfigurer {
 //	為了跨網域，參考https://www.baeldung.com/spring-cors
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("http://localhost:8080").allowedMethods("PUT", "DELETE");
+		registry.addMapping("/**").allowedOrigins("http://localhost:8080").allowedMethods("PUT", "DELETE", "GET", "POST");
 	}
 }

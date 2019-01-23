@@ -56,17 +56,10 @@ public class ContextController {
 	}
 
 	// delete context
-//	@PostMapping("/delete")
-//	public List<ContextEntity> deleteContext(@Valid @RequestBody ContextEntity contextEntity) {
-//		iContextRepo.delete(contextEntity);
-//		List<ContextEntity> contextData = new ArrayList<ContextEntity>();
-//		contextData = iContextRepo.findAll();
-//		return contextData;
-//	}
 	@DeleteMapping("/delete/{id}")
 	public String deleteContext(@PathVariable(value = "id") ContextEntity contextEntity) {
-		 iContextRepo.delete(contextEntity);
-		 return "data delete";
+		iContextRepo.delete(contextEntity);
+		return "data delete";
 	}
 
 }

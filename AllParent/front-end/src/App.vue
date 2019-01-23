@@ -12,9 +12,15 @@
     </v-toolbar>
     <v-content>
       <!-- <v-container fluid grid-list-lg> -->
-     <router-view/> 
+      <router-view/>
       <!-- </v-container> -->
+      <v-layout column class="fab-container">
+        <v-btn fab color="orange" @click="createText()">
+          <v-icon>add</v-icon>
+        </v-btn>
+      </v-layout>
     </v-content>
+
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
       <v-list>
         <v-list-tile @click="right = !right">
@@ -26,7 +32,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+      <span>&copy; 2019</span>
     </v-footer>
   </v-app>
 </template>
@@ -51,6 +57,11 @@ export default {
       right: true,
       rightDrawer: false
     };
+  },
+  methods: {
+    createText() {
+      this.$router.push({ name: "createText" });
+    }
   },
   mounted() {
     axios.get("/getAllContext", {}).then(({ data }) => {

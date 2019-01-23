@@ -33,6 +33,12 @@ export default new Router({
         import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
     {
+      path: '/creataText',
+      name: 'createText',
+      component: () =>
+        import('./components/CreateText.vue')
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import(/* "login" */ './views/Login.vue'),
