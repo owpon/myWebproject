@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ziv.config.JSONResult;
 import com.ziv.dao.imember.IContextRepo;
 import com.ziv.entity.ContextEntity;
 import com.ziv.exception.ResourceNotFoundException;
@@ -60,6 +62,20 @@ public class ContextController {
 	public String deleteContext(@PathVariable(value = "id") ContextEntity contextEntity) {
 		iContextRepo.delete(contextEntity);
 		return "data delete";
+	}
+
+	@PostMapping(value = "/users", produces = "application/json;charset=UTF-8")
+	public String usersList() {
+
+		ArrayList<String> users = new ArrayList<String>() {
+			{
+				add("freewolf");
+				add("tom");
+				add("jerry");
+			}
+		};
+
+		return JSONResult.fillResultString(0, "", users);
 	}
 
 }
