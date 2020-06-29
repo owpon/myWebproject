@@ -22,9 +22,7 @@ import lombok.Data;
 @Table(name = "context")
 @EntityListeners(AuditingEntityListener.class)
 public class ContextEntity implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

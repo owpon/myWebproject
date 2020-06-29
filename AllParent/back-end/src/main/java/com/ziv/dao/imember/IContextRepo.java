@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ziv.entity.ContextEntity;
 
 public interface IContextRepo extends JpaRepository<ContextEntity, Long> {
-	List<ContextEntity> findAll();
+    //因為是使用jpa所以不需實作
+    List<ContextEntity> findAll();
 }
